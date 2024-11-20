@@ -2,16 +2,19 @@ import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import { GlobalStyle } from './style/global';
 import { ThemeProvider } from "styled-components";
-import { light, dark } from "./style/theme";
+import { ThemeName, getTheme } from "./style/theme";
+import ThemeSwitcher from "./components/common/header/ThemeSwitcher";
+import { useContext, useState } from "react";
+import { BookStoreThemeProvider, ThemeContext } from "./context/themeContext";
 
 function App() {
     return (
-      <ThemeProvider theme={dark}>
-        <GlobalStyle themeName="dark" />
-        <Layout>
-          <Home />
-        </Layout>
-      </ThemeProvider>
+      <BookStoreThemeProvider>
+          <ThemeSwitcher />
+          <Layout>
+            <Home />
+          </Layout>
+      </BookStoreThemeProvider>
     );
 }
 
